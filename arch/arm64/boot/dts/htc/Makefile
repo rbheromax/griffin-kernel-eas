@@ -1,3 +1,4 @@
+ifneq ($(CONFIG_PIXEL_DEVICE_DTBS),y)
 dtb-$(CONFIG_ARCH_MSM8996) += \
 	msm8996pro-v1.1-htc_marlin-a.dtb \
 	msm8996pro-v1.1-htc_sailfish-a.dtb \
@@ -22,6 +23,7 @@ dtb-$(CONFIG_ARCH_MSM8996) += \
 	msm8996-v3-htc_t50-xc.dtb \
 	msm8996-v3-htc_t50-xb.dtb \
 	msm8996-v3-htc_t50-xa.dtb \
+endif
 
 always          := $(dtb-y)
 subdir-y        := $(dts-dirs)

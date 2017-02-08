@@ -704,6 +704,21 @@ config TRACER_PKT
 	  processor communication protocols. The profiling information
 	  can be logged into the tracer packet itself.
 
+config PIXEL_DEVICE_DTBS
+	depends on ARCH_MSM
+	default n
+	bool "Google Pixel Device DTBs"
+	help
+	  Include Google Pixel device-specific DTBs.
+
+config MMI_DEVICE_DTBS
+	depends on ARCH_MSM
+	default n
+	bool "Motorola Mobility Device DTBs"
+	help
+	  Only include Motorola device specific DTBs to limit the number that
+	  get built during kernel compilation.
+
 config MSM_SECURE_BUFFER
 	bool "Helper functions for securing buffers through TZ"
 	help
@@ -826,5 +841,37 @@ config MSM_REMOTEQDSS
 	  /sys/class/remoteqdss.
 
 source "drivers/soc/qcom/memshare/Kconfig"
+
+config BOOTINFO
+	bool "Boot Information Feature"
+	default n
+	help
+	  This feature provides access to certain boot information
+	  from both kernel context (via function call) and user
+	  context (via /proc/bootinfo).
+
+config MMI_UNIT_INFO
+	default n
+	bool "Motorola Mobility Unit Info"
+	help
+	Provide mechanism to expose unit information to other cpu via smem.
+
+config MMI_SOC_INFO
+	default n
+	bool "Motorola Mobility SOC Info"
+	help
+	  Provide mechanism to export MSM SOC info.
+
+config MMI_RAM_INFO
+	default n
+	bool "Motorola Mobility RAM Info"
+	help
+	Provide mechanism to access RAM size and MR registers values via sysfs.
+
+config MMI_STORAGE_INFO
+	default n
+	bool "Motorola Mobility STORAGE Info"
+	help
+	Provide mechanism to export EMMC/UFS type, size and vendor info.
 
 endif # ARCH_MSM
